@@ -20,15 +20,14 @@ class ValidationPersonRequest extends FormRequest
      * @return array<string, \Illuminate\Contracts\Validation\ValidationRule|array<mixed>|string>
      */
     public function rules(): array
-    {
+    {   
         $id = $this->route('id');
-        $ci = $this->get("ci");
         return [
             'name' => ['required', 'regex:/^[A-Za-zñÑáéíóúÁÉÍÓÚ\s]*$/'],
             'first_surname' => ['nullable', 'regex:/^[A-Za-zñÑáéíóúÁÉÍÓÚ]+$/'],
             'last_surname' => ['nullable', 'regex:/^[A-Za-zÑñ\s]+$/'],
             'ci' => ['required', 'string', 'unique:people,ci,' . ($id ?? 'NULL')],
-            'birthdate' => ['required', 'date_format:d-m-Y', 'before:today']
+            'birthdate' => ['required', 'date_format:m/d/Y', 'before:today']
         ];
     }
 
@@ -61,8 +60,9 @@ class ValidationPersonRequest extends FormRequest
             'last_surname.regex' => 'El campo solo debe tener letras',
             'ci.required' => 'El campo es obligatorio',
             'ci.unique' => 'El documento de identidad ya esta en uso.',
-            'birthdate.required' => 'El campo es obligatorio',
-            'birthdate.date_format' => 'El formato debe ser d-m-Y',
+            'birthdate.required' => 'El campo es obligatorio.',
+            'birthdate.date_format' => 'El formato debe ser d/m/Y.',
+            'birthdate.before' => 'La fecha debe ser antes de hoy.',
         ];
     }
 }

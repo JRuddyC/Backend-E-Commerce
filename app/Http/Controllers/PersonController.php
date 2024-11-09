@@ -14,7 +14,7 @@ class PersonController extends Controller
     {
         $person = Person::first();
         if ($person)
-            return ["messaje" => "No se permiten mas registros root de persona."];
+            return response()->json(["message" => "No se permiten más registros root de persona."], 400);
         return $this->register($request);
     }
 
