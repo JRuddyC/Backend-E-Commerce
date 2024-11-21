@@ -62,6 +62,6 @@ class User extends Authenticatable
 
     public function person()
     {
-        $this->hasMany(Person::class);
+        $this->belongsTo(Person::class);
     }
 }

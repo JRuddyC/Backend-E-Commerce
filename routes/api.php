@@ -47,7 +47,7 @@ Route::controller(PasswordController::class)->prefix('password')->group(function
 });
 
 Route::controller(PersonController::class)->prefix('person')->group(function () {
-    Route::post('/root', 'first');
+    // Route::post('/root', 'first');
     Route::get('/show', 'show');
     Route::post('/register', 'register');
     Route::post('/update/{id}', 'update');
