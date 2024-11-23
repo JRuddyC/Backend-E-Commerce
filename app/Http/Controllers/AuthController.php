@@ -57,11 +57,9 @@ class AuthController extends Controller
 
     public function login(ValidationLogin $request)
     {
-
         if (!Auth::attempt($request->only('email', 'password'))) {
             throw new AuthException('Credenciales incorrectas.');
         }
-
         $user = Auth::user();
 
         $token = $user->createToken('auth_token')->plainTextToken;

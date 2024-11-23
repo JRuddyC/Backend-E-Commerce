@@ -20,7 +20,7 @@ class ValidationPersonRequest extends FormRequest
      * @return array<string, \Illuminate\Contracts\Validation\ValidationRule|array<mixed>|string>
      */
     public function rules(): array
-    {   
+    {
         $id = $this->route('id');
         return [
             'name' => ['required', 'regex:/^[A-Za-zñÑáéíóúÁÉÍÓÚ\s]*$/'],
