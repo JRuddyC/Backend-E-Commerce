@@ -43,4 +43,4 @@ class PermissionController extends Controller
             return ["message" => "El permiso que esta buscando no existe."];
         return $permission;
     }
-}       
+}

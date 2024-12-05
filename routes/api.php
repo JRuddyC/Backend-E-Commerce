@@ -14,6 +14,10 @@ Route::get('/user', function (Request $request) {
 })->middleware('auth:sanctum');
 
 Route::controller(AuthController::class)->prefix('auth')->group(function () {
+    Route::prefix('verify')->group(function () {
+        Route::post('/person', 'verifyPerson');
+        Route::post('/email', 'verifyEmail');
+    });
     Route::post('/root', 'first');
     Route::post('/register', 'register');
     Route::post('/login', 'login');
@@ -47,7 +51,6 @@ Route::controller(PasswordController::class)->prefix('password')->group(function
 });
 
 Route::controller(PersonController::class)->prefix('person')->group(function () {
-    // Route::post('/root', 'first');
     Route::get('/show', 'show');
     Route::post('/register', 'register');
     Route::post('/update/{id}', 'update');

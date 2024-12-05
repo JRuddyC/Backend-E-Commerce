@@ -18,13 +18,14 @@ use PhpParser\Node\Stmt\TryCatch;
 class AuthController extends Controller
 {
 
-    // public function first(ValidationUser $request)
-    // {
-    //     $user = User::first();
-    //     if ($user)
-    //         return ["messaje" => "No se permiten mas registros root de usuario."];
-    //     return $this->register($request);
-    // }
+    public function verifyPerson(ValidationPersonRequest $request)
+    {
+        return response()->json(['message' => 'Datos correctos.'], 200);
+    }
+    public function verifyEmail(ValidationRegisterRequest $request)
+    {
+        return response()->json(['message' => 'Datos correctos.'], 200);
+    }
 
     public function register(ValidationPersonRequest $personRequest, ValidationRegisterRequest $userRequest)
     {
